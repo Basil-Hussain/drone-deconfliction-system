@@ -12,7 +12,35 @@ This project is a drone airspace safety checker designed for FlytBase's Robotics
 - Scalable and modular architecture
 
 ## 📁 Project Structure
+Overview
+This system serves as a strategic deconfliction service for validating whether a drone's planned waypoint mission is safe to execute in shared airspace. It checks for conflicts in both space and time against the simulated flight paths of multiple other drones.
 
+Key Features
+Spatial Conflict Detection: Validates that the primary mission's path does not intersect with any other drone's trajectory within a defined safety buffer.
+Temporal Conflict Detection: Ensures that, within the overall mission window, no other drone is present in the same spatial area during overlapping time segments.
+Detailed Conflict Information: When conflicts are detected, the system provides detailed information about the location, time, and involved drones.
+2D and 3D Visualization: Visually depicts the primary drone's mission, trajectories of other drones, and highlights conflicts.
+How to Use
+Define the primary mission by specifying waypoints and a time window.
+Add other drone missions, each with waypoints and associated timestamps.
+Click "Run Check" to analyze the mission for conflicts.
+View the visualization and conflict details to understand any detected issues.
+Use the "Load Test Case" button to explore predefined scenarios.
+System Design
+The deconfliction system employs a modular architecture with the following components:
+
+Conflict Detection Engine: Performs spatial and temporal checks on mission data.
+Visualization Module: Generates 2D and 3D representations of missions and conflicts.
+Test Case Repository: Provides sample scenarios for exploring different conflict situations.
+Web Interface: Allows intuitive interaction with the system.
+Scalability Considerations
+For a real-world deployment handling tens of thousands of commercial drones, the system would need significant enhancements:
+
+Spatial Partitioning: Using structures like octrees or R-trees to optimize spatial queries.
+Distributed Computing: Parallelizing conflict detection across multiple nodes.
+Real-time Data Ingestion: Building pipelines for handling continuous drone position updates.
+Caching and Indexing: Optimizing database access for trajectory information.
+Advanced Algorithms: Implementing more sophisticated conflict prediction methods.
 
 ## ▶️ How to Run
 
